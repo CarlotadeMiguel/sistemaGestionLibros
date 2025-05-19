@@ -14,7 +14,6 @@ def create_app():
     db.init_app(app)
     
 
-    from backend.models.libro import LibroModel  
     from backend.routes.libros import libros_bp
     from backend.routes.auth import auth_bp
 
