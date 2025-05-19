@@ -1,19 +1,28 @@
+# backend/app.py
 from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
-CORS(app)
-# app.config.from_pyfile('config.py')
-# db = SQLAlchemy(app)       
+db = SQLAlchemy()
 
-@app.route('/')
-def home():
-    return 'API OK'
+def create_app():
+    app = Flask(__name__)
+    CORS(app)
+    app.config.from_object('backend.config.Config')
+    
+    db.init_app(app)
+    
+
+    from backend.models.libro import LibroModel  
+    from backend.routes.libros import libros_bp
+    
+    app.register_blueprint(libros_bp)
+    
+    # with app.app_context():
+    #     db.create_all()
+    
+    return app
 
 if __name__ == '__main__':
-    # Crear las tablas solo la primera vez
-    # Descomenta estas líneas solo la primera vez que inicias la aplicación
-    # with app.app_context():                #  ← necesario para acceder al contexto de Flask
-    #     db.create_all()                    #  ← crea las tablas definidas en los modelos
+    app = create_app()
     app.run(debug=True)

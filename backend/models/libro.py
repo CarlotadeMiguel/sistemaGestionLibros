@@ -1,14 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
-
-# Inicializamos la base de datos
-db = SQLAlchemy()
+from backend.app import db
 
 class Libro:
     def __init__(self, titulo, autor, precio):
         self.__titulo = titulo
         self.__autor = autor
-        self.__precio = None  # Inicializamos el precio con None
-        self.precio = precio  # Usamos el setter para validar el precio
+        self.__precio = None 
+        self.precio = precio  
 
     @property
     def titulo(self):
@@ -30,13 +28,12 @@ class Libro:
 
 # Clase que mapea la tabla 'libros' en la base de datos
 class LibroModel(db.Model):
-    __tablename__ = 'libros'  # Nombre de la tabla en la base de datos
-
-    id = db.Column(db.Integer, primary_key=True)  # Columna id como clave primaria
-    titulo = db.Column(db.String(255), nullable=False)  # Columna titulo
-    autor = db.Column(db.String(255), nullable=False)  # Columna autor
-    precio = db.Column(db.Float, nullable=False)  # Columna precio
-
+    __tablename__ = 'libros'
+    id = db.Column(db.Integer, primary_key=True)
+    titulo = db.Column(db.String(255), nullable=False)
+    autor = db.Column(db.String(255), nullable=False)
+    precio = db.Column(db.Float, nullable=False)
+    
     def __init__(self, titulo, autor, precio):
         self.titulo = titulo
         self.autor = autor

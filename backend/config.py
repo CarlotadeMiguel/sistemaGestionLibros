@@ -1,3 +1,8 @@
 # backend/config.py
-SQLALCHEMY_DATABASE_URI = 'sqlite:///libros.db'
-SQLALCHEMY_TRACK_MODIFICATIONS = False
+import os
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+class Config:
+    SQLALCHEMY_DATABASE_URI = f'sqlite:///{os.path.join(basedir, "libros.db")}'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
