@@ -3,7 +3,7 @@ import { register } from "../services/api"; // Asegúrate de tener esta función
 import { useNavigate, Link } from "react-router-dom";
 import RoleSelect from "./RoleSelect";
 
-export default function Register() {
+export default function Register( { onLogin }) {
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -28,6 +28,7 @@ export default function Register() {
 
     if (res.token) {
       localStorage.setItem("token", res.token);
+      onLogin?.();
       navigate("/libros");
     } else {
       window.alert(res.error || "❌ No se pudo registrar el usuario");
