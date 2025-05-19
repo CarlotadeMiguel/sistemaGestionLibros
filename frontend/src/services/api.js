@@ -26,9 +26,9 @@ export const actualizarLibro = (id, data) =>
     body: JSON.stringify(data)
   }).then(r=>r.json());
 
-// export const login = creds =>
-//   fetch(`${BASE}/login/`, {
-//     method: 'POST',
-//     headers: {'Content-Type':'application/json'},
-//     body: JSON.stringify(creds)
-//   }).then(r=>r.json());
+export const login = creds =>
+  fetch(`${BASE}/login`, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(creds)
+  }).then(r=>r.json());

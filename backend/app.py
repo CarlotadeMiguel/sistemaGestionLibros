@@ -16,8 +16,10 @@ def create_app():
 
     from backend.models.libro import LibroModel  
     from backend.routes.libros import libros_bp
-    
+    from backend.routes.auth import auth_bp
+
     app.register_blueprint(libros_bp)
+    app.register_blueprint(auth_bp)
     
     # with app.app_context():
     #     db.create_all()
