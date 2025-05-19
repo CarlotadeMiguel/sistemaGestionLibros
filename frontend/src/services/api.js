@@ -1,6 +1,6 @@
 const BASE = '/api';
 
-export const getLibros = () => fetch(`${BASE}/libros`).then(r=>r.json());
+export const getLibros = () => fetch(`${BASE}/libros/`).then(r=>r.json());
 
 export const crearLibro = data => 
   fetch(`${BASE}/libros/`, {
