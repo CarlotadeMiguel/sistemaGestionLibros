@@ -3,7 +3,7 @@ import { login } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import RoleSelect from "./RoleSelect";
 
-export default function Login() {
+export default function  Login ({ onLogin }) {
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -14,17 +14,17 @@ export default function Login() {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const res = await login(form);
     if (res.token) {
       localStorage.setItem("token", res.token);
+      onLogin?.(); 
       navigate("/libros");
     } else {
       window.alert(res.error || "❌ Hechizo fallido: error de autenticación");
     }
   };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 flex items-center justify-center px-4">
       <form
