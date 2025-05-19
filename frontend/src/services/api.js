@@ -32,3 +32,10 @@ export const login = creds =>
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify(creds)
   }).then(r=>r.json());
+
+  export const register = (data) =>
+    fetch('/api/register', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    }).then(r => r.json());

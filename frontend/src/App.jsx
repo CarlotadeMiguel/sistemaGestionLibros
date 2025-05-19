@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 import Login from "./components/Login";
+import Register from "./components/Register";
 import ListarLibros from "./components/ListarLibros";
 import FormularioLibro from "./components/FormularioLibro";
 import Header from "./components/Header";
@@ -28,6 +29,7 @@ export default function App() {
           path="/login"
           element={<Login onLogin={handleLogin} />}
         />
+        <Route path="/register" element={<Register />} />
         <Route
           path="/libros"
           element={
