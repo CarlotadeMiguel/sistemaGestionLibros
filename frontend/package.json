@@ -11,6 +11,7 @@
     "tailwind:init": "tailwindcss init -p"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.3",
     "@tailwindcss/postcss": "^4.1.6",
     "@tailwindcss/postcss7-compat": "^2.2.17",
     "react": "^19.1.0",
